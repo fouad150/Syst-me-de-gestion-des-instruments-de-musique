@@ -36,6 +36,16 @@ session_start();
                                 unset($_SESSION['err-singup']);
                             }
                             ?>
+                            <?php
+                            if(isset($_SESSION['err-validation'])){
+                              echo"
+                              <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                              <strong>".$_SESSION['err-validation']."</strong>  
+                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                              </div>";
+                              unset($_SESSION['err-validation']);
+                            }
+                            ?>
                             <hr class="mb-3">
                             <label for="firstname"><b>First Name</b></label>
                             <input class="form-control" type="text" name="first_name" required>

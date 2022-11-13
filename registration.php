@@ -7,20 +7,24 @@ if(isset($_POST['sign_up'])){
     $last_name=$_POST['last_name'];
     $password=$_POST['password'];
     $email=$_POST['email'];
-    if(!checkExist($email)){
-        insertDB($first_name,$last_name,$email,$password);
-        //insertion succeed
-        //redirection to login
-         echo "<script>window.location.replace('login.php')</script>";
-        //echo "succeed";
-    }else{
-        // email entered alredy exist in DB 
-        // storing ERR DESCIPTION
-        $_SESSION['err-singup']="Email Already Exist";
-       // echo $_SESSION['err-singup'];
+    if(checkEmpty($first_name,$last_name,$email,$password)){
+        $_SESSION['err-validation']="Please fill all the fields";
         echo "<script>window.location.replace('sign-up.php')</script>";
+    }else{
+        if(!checkExist($email)){
+            insertDB($first_name,$last_name,$email,$password);
+            //insertion succeed
+            //redirection to login
+             echo "<script>window.location.replace('login.php')</script>";
+            //echo "succeed";
+        }else{
+            // email entered alredy exist in DB 
+            // storing ERR DESCIPTION
+            $_SESSION['err-singup']="Email Already Exist";
+           // echo $_SESSION['err-singup'];
+            echo "<script>window.location.replace('sign-up.php')</script>";
+        }
     }
-
 }
 
 function checkExist($email){
@@ -47,5 +51,13 @@ function insertDB($first_name,$last_name,$email,$password){
         //redirection to signup because of error exist
         header("location : ./sign-up.php");
 
+    }
+}
+
+function checkEmpty($first_name,$last_name,$email,$password){
+    if(empty($first_name) || empty($last_name) || empty($email) || empty($password)){
+        return true;
+    }else{
+        return false;
     }
 }
