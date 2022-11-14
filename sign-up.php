@@ -46,6 +46,16 @@ session_start();
                               unset($_SESSION['err-validation']);
                             }
                             ?>
+                            <?php
+                            if(isset($_SESSION['err-email-validation'])){
+                              echo"
+                              <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                              <strong>".$_SESSION['err-email-validation']."</strong>  
+                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                              </div>";
+                              unset($_SESSION['err-email-validation']);
+                            }
+                            ?>
                             <hr class="mb-3">
                             <label for="firstname"><b>First Name</b></label>
                             <input class="form-control" type="text" name="first_name" required>

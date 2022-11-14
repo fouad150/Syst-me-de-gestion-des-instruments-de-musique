@@ -10,6 +10,9 @@ if(isset($_POST['sign_up'])){
     if(checkEmpty($first_name,$last_name,$email,$password)){
         $_SESSION['err-validation']="Please fill all the fields";
         echo "<script>window.location.replace('sign-up.php')</script>";
+    }else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $_SESSION['err-email-validation']="the special characters are not allowed in the email";
+        echo "<script>window.location.replace('sign-up.php')</script>";
     }else{
         if(!checkExist($email)){
             insertDB($first_name,$last_name,$email,$password);

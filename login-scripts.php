@@ -5,7 +5,10 @@ include('database.php');
 if(isset($_POST['login'])){
     $password=$_POST['password'];
     $email=$_POST['email'];
-    if(checkExist($email,$password)){
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $_SESSION['err-email-validation']="email not valid";
+        echo "<script>window.location.replace('login.php')</script>";
+    }else if(checkExist($email,$password)){
          echo "<script>window.location.replace('index.php')</script>";
     }else{
         $_SESSION['err-login']="Email or password incorrect try again";
@@ -30,3 +33,4 @@ function checkExist($email,$password){
         return false;
     }
 }
+

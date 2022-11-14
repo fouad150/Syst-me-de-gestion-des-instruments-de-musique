@@ -36,6 +36,16 @@ session_start();
                                 unset($_SESSION['err-login']);
                             }
                             ?>
+                            <?php
+                            if(isset($_SESSION['err-email-validation'])){
+                              echo"
+                              <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                              <strong>".$_SESSION['err-email-validation']."</strong>  
+                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                              </div>";
+                              unset($_SESSION['err-email-validation']);
+                            }
+                            ?>
                             <hr class="mb-3">
                             <label for="email"><b>Email Address</b></label>
                             <input class="form-control" type="email" name="email" required>
@@ -43,6 +53,7 @@ session_start();
                             <input class="form-control" type="password" name="password" required>
                             <hr class="mb-3">
                             <input class="btn btn-primary w-100" type="submit" name="login" value="Login">
+                            <a href="sign-up.php">Create account</a>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-6" style="background-image: url('issets/bg.jpg');background-size:cover;">
@@ -52,37 +63,9 @@ session_start();
                 </div>
             </form>
         </div>
-        <!-- <div>
-            <form action="login-scripts.php" method="post">
-                <div class="container">
-                    <div class="row">
-                            <div class="col-sm-3">
-                            <h1>Login</h1>
-                            <?php
-                            // if(isset($_SESSION['err-login'])){
-                            //     echo "
-                            //     <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            //     <strong>Login Failed! </strong>  ".$_SESSION['err-login']."
-                            //     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                            //     </div>";
-                            //     unset($_SESSION['err-login']);
-                            // }
-                            ?>
-                            <hr class="mb-3">
-                            <label for="email"><b>Email Address</b></label>
-                            <input class="form-control" type="email" name="email" required>
-                            <label for="password"><b>Password</b></label>
-                            <input class="form-control" type="password" name="password" required>
-                            <hr class="mb-3">
-                            <input class="btn btn-primary" type="submit" name="login" value="Login">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div> -->
     </body>
 </html>
-<script>
+<!-- <script>
     (function () {
   'use strict'
 
@@ -102,4 +85,4 @@ session_start();
       }, false)
     })
 })()
-</script>
+</script> -->
