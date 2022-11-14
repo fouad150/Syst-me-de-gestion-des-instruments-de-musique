@@ -65,7 +65,7 @@ session_start();
         </div>
     </body>
 </html>
-<!-- <script>
+<script>
     (function () {
   'use strict'
 
@@ -85,4 +85,4 @@ session_start();
       }, false)
     })
 })()
-</script> -->
+</script>
