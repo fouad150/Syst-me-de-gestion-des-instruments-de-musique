@@ -1,3 +1,9 @@
 *{
     box-sizing: border-box;
 }
+nav{
+    background-color: rgb(33, 31, 35);
+}
+.logout{
+    /* background-color: aliceblue; */
+}

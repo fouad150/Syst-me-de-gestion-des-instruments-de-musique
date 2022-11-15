@@ -1,6 +1,7 @@
 <?php
 include('database.php');
-session_start();
+include('scripts.php');
+//session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +22,12 @@ session_start();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid d-flex justify-content-between">
             <?php
             if (isset($_SESSION['profil'])) {
                 //var_dump($_SESSION['profil']);
-                echo "<a class='navbar-brand' href='#'><strong>" . $_SESSION['profil'] . "</strong></a>";
+                echo "<a class='navbar-brand text-light' href='#'><strong>" . $_SESSION['profil'] . "</strong></a>";
             } else {
                 echo "<script>window.location.replace('login.php')</script>";
             }
@@ -37,17 +38,23 @@ session_start();
 
             <form class="d-flex" action="scripts.php" method="POST">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button type="submit" class="btn btn-warning text-nowrap" name="logout">Log out</button>
+                <button type="submit" class="btn btn-warning text-nowrap logout" name="logout">Log out</button>
             </form>
         </div>
     </nav>
 
     <div class="container pt-3">
         <a href="#modal-instrument" data-bs-toggle="modal" class="btn btn-outline-primary btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add instrument</a>
+        <?php
+        if (isset($_SESSION['successful-adding'])) {
+            echo "<div class='alert alert-primary mt-3' role='alert'><strong>" . $_SESSION['successful-adding'] . "</strong></div>";
+            unset($_SESSION['successful-adding']);
+        }
+        ?>
         <table class="table table-success table-hover mt-3">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">instruments</th>
                     <th scope="col">category</th>
                     <th scope="col">quantity</th>
@@ -55,26 +62,16 @@ session_start();
                 </tr>
             </thead>
             <tbody>
-                <tr href="#modal-instrument" data-bs-toggle="modal">
+                <!-- <tr href="#modal-instrument" data-bs-toggle="modal">
                     <th scope="row">1</th>
                     <td>Mark </td>
                     <td>Otto </td>
                     <td>@mdo </td>
                     <td>@mdo </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
+                </tr> -->
+                <?php
+                getInstrument();
+                ?>
             </tbody>
         </table>
     </div>
@@ -96,7 +93,7 @@ session_start();
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Category</label>
-                            <select class="form-select" id="instrument-category" name="category">
+                            <select class="form-select" id="instrument-category" name="category_id">
                                 <option value="">Please select</option>
                                 <option value="1">Idiophones</option>
                                 <option value="2">Membranophones</option>
@@ -115,9 +112,9 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                        <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="instrument-delete-btn">Delete</a>
-                            <button type="submit" name="update" class="btn btn-warning task-action-btn" id="instrument-update-btn">Update</a>
-                                <button type="submit" name="save" class="btn btn-primary task-action-btn" id="instrument-save-btn">Save</button>
+                        <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="instrument-delete-btn">Delete</button>
+                        <button type="submit" name="update" class="btn btn-warning task-action-btn" id="instrument-update-btn">Update</button>
+                        <button type="submit" name="save" class="btn btn-primary task-action-btn" id="instrument-save-btn">Save</button>
                     </div>
                 </form>
             </div>
