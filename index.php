@@ -44,7 +44,7 @@ include('scripts.php');
     </nav>
 
     <div class="container pt-3">
-        <a href="#modal-instrument" data-bs-toggle="modal" class="btn btn-outline-primary btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add instrument</a>
+        <a href="#modal-instrument" data-bs-toggle="modal" class="btn btn-outline-primary btn-rounded px-4 rounded-pill" onclick="emtyModal()"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add instrument</a>
         <?php
         if (isset($_SESSION['successful-adding'])) {
             echo "<div class='alert alert-primary mt-3' role='alert'><strong>" . $_SESSION['successful-adding'] . "</strong></div>";
