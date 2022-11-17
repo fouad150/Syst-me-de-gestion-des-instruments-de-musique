@@ -51,7 +51,13 @@ include('scripts.php');
             unset($_SESSION['successful-adding']);
         }
         ?>
-        <table class="table table-success table-hover mt-3">
+
+        <style>
+            .product-table td {
+                cursor: pointer;
+            }
+        </style>
+        <table class="table table-success product-table table-hover mt-3">
             <thead>
                 <tr>
                     <th scope="col"></th>
