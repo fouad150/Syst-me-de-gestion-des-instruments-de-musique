@@ -60,7 +60,8 @@ include('scripts.php');
         <table class="table table-success product-table table-hover mt-3">
             <thead>
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col"><?php echo "N:";
+                                    countInstruments() ?></th>
                     <th scope="col">instruments</th>
                     <th scope="col">category</th>
                     <th scope="col">quantity</th>
@@ -85,7 +86,7 @@ include('scripts.php');
     <div class="modal fade" id="modal-instrument">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="scripts.php" method="POST" id="form-instrument">
+                <form action="scripts.php" method="POST" id="form-instrument" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h5 class="modal-title">Instrument</h5>
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -114,6 +115,10 @@ include('scripts.php');
                         <div class="mb-3">
                             <label class="form-label">Price</label>
                             <input type="text" class="form-control" id="instrument-price" name="price" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Add image</label>
+                            <input class="form-control" type="file" id="formFile" name="image">
                         </div>
                     </div>
                     <div class="modal-footer">
