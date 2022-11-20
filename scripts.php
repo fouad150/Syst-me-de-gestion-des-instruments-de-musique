@@ -29,7 +29,7 @@ function getInstrument()
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr href='#modal-instrument' data-bs-toggle='modal' id='" . $row['id'] . "'  onclick='showModal(this)'>
-                <th scope='row'><img src=" . $row['image'] . " width='300px'></img></th>
+                <th scope='row'><img src=" . $row['image'] . " width='150px'></img></th>
                 <td>" . $row['name'] . "</td>
                 <td id='" . $row['category_id'] . "'>" . $row['ctg'] . "</td>
                 <td>" . $row['quantity'] . "</td>
@@ -45,8 +45,12 @@ function update()
     $category_id = $_POST['category_id'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
+    global $image_destination;
+    // var_dump($image_destination);
+    saveImage();
+    // var_dump($image_destination);
     global $con;
-    $sql = "UPDATE `instruments` SET `name`='$name',`category_id`='$category_id',`quantity`='$quantity',`price`='$price' 
+    $sql = "UPDATE `instruments` SET `name`='$name',`category_id`='$category_id',`quantity`='$quantity',`price`='$price',`image`='$image_destination'
     WHERE `id`='$instrument_id'";
     mysqli_query($con, $sql);
     header('location: index.php');
