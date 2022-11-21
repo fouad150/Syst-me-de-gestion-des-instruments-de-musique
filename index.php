@@ -57,30 +57,32 @@ include('scripts.php');
                 cursor: pointer;
             }
         </style>
-        <table class="table table-success product-table table-hover mt-3">
-            <thead>
-                <tr>
-                    <th scope="col"><?php echo "N:";
-                                    countInstruments() ?></th>
-                    <th scope="col">instruments</th>
-                    <th scope="col">category</th>
-                    <th scope="col">quantity</th>
-                    <th scope="col">price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <tr href="#modal-instrument" data-bs-toggle="modal">
-                    <th scope="row">1</th>
-                    <td>Mark </td>
-                    <td>Otto </td>
-                    <td>@mdo </td>
-                    <td>@mdo </td>
-                </tr> -->
-                <?php
-                getInstrument();
-                ?>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-success product-table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col"><?php echo "N:";
+                                        countInstruments() ?></th>
+                        <th scope="col">instruments</th>
+                        <th scope="col">category</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr href="#modal-instrument" data-bs-toggle="modal">
+                        <th scope="row">1</th>
+                        <td>Mark </td>
+                        <td>Otto </td>
+                        <td>@mdo </td>
+                        <td>@mdo </td>
+                    </tr> -->
+                    <?php
+                    getInstrument();
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Instrument MODAL -->
     <div class="modal fade" id="modal-instrument">
@@ -116,10 +118,10 @@ include('scripts.php');
                             <label class="form-label">Price</label>
                             <input type="text" class="form-control" id="instrument-price" name="price" />
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="formFile" class="form-label">Add image</label>
                             <input class="form-control" type="file" id="formFile" name="image">
-                        </div>
+                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
