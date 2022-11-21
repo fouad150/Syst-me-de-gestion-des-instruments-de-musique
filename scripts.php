@@ -103,4 +103,3 @@ function countInstruments()
 //         $_SESSION['err-uplaoding_img'] = "can not upload image of extention .$image_extension ! (only jpg , jpeg , png allowed )";
 //     }
 // }
-

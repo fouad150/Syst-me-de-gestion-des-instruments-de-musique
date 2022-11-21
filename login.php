@@ -58,7 +58,7 @@ session_start();
               <a href="sign-up.php">Create account</a>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-6" style="background-image: url('issets/bg.jpg');background-size:cover;">
+        <div class="col-sm-12 col-md-4 col-lg-6  image_login_signup" style="background-image: url('issets/bg.jpg');background-size:cover;">
 
         </div>
       </div>
