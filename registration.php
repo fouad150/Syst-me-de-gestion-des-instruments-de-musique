@@ -16,13 +16,10 @@ if(isset($_POST['sign_up'])){
     }else{
         if(!checkExist($email)){
             insertDB($first_name,$last_name,$email,$password);
-            //insertion succeed
             //redirection to login
              echo "<script>window.location.replace('login.php')</script>";
-            //echo "succeed";
         }else{
             // email entered alredy exist in DB 
-            // storing ERR DESCIPTION
             $_SESSION['err-singup']="Email Already Exist";
            // echo $_SESSION['err-singup'];
             echo "<script>window.location.replace('sign-up.php')</script>";

@@ -11,6 +11,11 @@ nav{
     cursor: pointer;
 } */
 
+.logout_form{
+    position: absolute;
+    right: 1vw;
+}
+
 @media screen and (max-width: 800px) {
     .image_login_signup{
         display: none;

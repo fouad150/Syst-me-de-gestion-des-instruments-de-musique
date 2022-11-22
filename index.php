@@ -32,11 +32,10 @@ include('scripts.php');
                 echo "<script>window.location.replace('login.php')</script>";
             }
             ?>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <form class="d-flex" action="scripts.php" method="POST">
+            </button> -->
+            <form class="d-flex logout_form" action="scripts.php" method="POST">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button type="submit" class="btn btn-warning text-nowrap logout" name="logout">Log out</button>
             </form>
@@ -47,8 +46,28 @@ include('scripts.php');
         <a href="#modal-instrument" data-bs-toggle="modal" class="btn btn-outline-primary btn-rounded px-4 rounded-pill" onclick="emtyModal()"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add instrument</a>
         <?php
         if (isset($_SESSION['successful-adding'])) {
-            echo "<div class='alert alert-primary mt-3' role='alert'><strong>" . $_SESSION['successful-adding'] . "</strong></div>";
+            echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-adding'] . "</strong></div>";
             unset($_SESSION['successful-adding']);
+        }
+
+        if (isset($_SESSION['successful-update'])) {
+            echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-update'] . "</strong></div>";
+            unset($_SESSION['successful-update']);
+        }
+
+        if (isset($_SESSION['empty-image'])) {
+            echo "<div class='alert alert-warning mt-3 mb-0' role='alert'><strong>Note: </strong>" . $_SESSION['empty-image'] . "</div>";
+            unset($_SESSION['empty-image']);
+        }
+
+        if (isset($_SESSION['extension-err'])) {
+            echo "<div class='alert alert-warning mt-3 mb-0' role='alert'><strong>Note: </strong>" . $_SESSION['extension-err'] . "</div>";
+            unset($_SESSION['extension-err']);
+        }
+
+        if (isset($_SESSION['uploading-err'])) {
+            echo "<div class='alert alert-warning mt-3 mb-0' role='alert'><strong>Note: </strong>" . $_SESSION['uploading-err'] . "</div>";
+            unset($_SESSION['uploading-err']);
         }
         ?>
 
@@ -96,6 +115,8 @@ include('scripts.php');
                     <div class="modal-body">
                         <!-- This Input Allows Storing instrument Index  -->
                         <input type="hidden" id="instrument-id" name="instrument_id">
+                        <!-- This Input Allows Storing image destination  -->
+                        <input type="hidden" id="image destination" name="image_destination">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
                             <input type="text" class="form-control" id="instrument-name" name="name" />
@@ -118,10 +139,10 @@ include('scripts.php');
                             <label class="form-label">Price</label>
                             <input type="text" class="form-control" id="instrument-price" name="price" />
                         </div>
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="formFile" class="form-label">Add image</label>
                             <input class="form-control" type="file" id="formFile" name="image">
-                        </div> -->
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
