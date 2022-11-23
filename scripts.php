@@ -29,7 +29,7 @@ function getInstrument()
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr href='#modal-instrument' data-bs-toggle='modal' id='" . $row['id'] . "'  onclick='showModal(this)'>
-                <th scope='row'><img src=" . $row['image'] . " id=" . $row['image'] . " height='100px' width='100px'></img></th>
+                <th class='th_image'scope='row' style='padding-right:0px;padding-left:6px;' ><div id=" . $row['image'] . " style=' background-image: url(" . $row['image'] . ");'></div></th>
                 <td>" . $row['name'] . "</td>
                 <td id='" . $row['category_id'] . "'>" . $row['ctg'] . "</td>
                 <td>" . $row['quantity'] . "</td>
@@ -64,6 +64,7 @@ function delete()
     global $con;
     $sql = "DELETE FROM `instruments` WHERE id='$instrument_id'";
     mysqli_query($con, $sql);
+    $_SESSION['successful-delete'] = "The instrument has been deleted successfully";
     header('location: index.php');
 }
 

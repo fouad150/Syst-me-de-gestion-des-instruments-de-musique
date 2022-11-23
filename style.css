@@ -10,7 +10,17 @@ nav{
 /* .product-table td {
     cursor: pointer;
 } */
-
+/* .th_image{
+    padding-right: 0px;
+    padding-left: 6px;
+} */
+.th_image div{
+    /* border: 1px black solid; */
+    height: 63px;
+    background-position: center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
 .logout_form{
     position: absolute;
     right: 1vw;

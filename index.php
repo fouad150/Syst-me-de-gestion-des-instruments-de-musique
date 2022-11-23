@@ -49,10 +49,13 @@ include('scripts.php');
             echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-adding'] . "</strong></div>";
             unset($_SESSION['successful-adding']);
         }
-
         if (isset($_SESSION['successful-update'])) {
             echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-update'] . "</strong></div>";
             unset($_SESSION['successful-update']);
+        }
+        if (isset($_SESSION['successful-delete'])) {
+            echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-delete'] . "</strong></div>";
+            unset($_SESSION['successful-delete²']);
         }
 
         if (isset($_SESSION['empty-image'])) {
@@ -116,7 +119,7 @@ include('scripts.php');
                         <!-- This Input Allows Storing instrument Index  -->
                         <input type="hidden" id="instrument-id" name="instrument_id">
                         <!-- This Input Allows Storing image destination  -->
-                        <input type="hidden" id="image destination" name="image_destination">
+                        <input type="text" id="image destination" name="image_destination">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
                             <input type="text" class="form-control" id="instrument-name" name="name" />
