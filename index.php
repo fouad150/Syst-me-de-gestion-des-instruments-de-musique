@@ -1,7 +1,6 @@
 <?php
 include('database.php');
 include('scripts.php');
-//session_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +25,6 @@ include('scripts.php');
         <div class="container-fluid d-flex justify-content-between">
             <?php
             if (isset($_SESSION['profil'])) {
-                //var_dump($_SESSION['profil']);
                 echo "<a class='navbar-brand text-light' href='#'><strong>" . $_SESSION['profil'] . "</strong></a>";
             } else {
                 echo "<script>window.location.replace('login.php')</script>";
@@ -55,7 +53,7 @@ include('scripts.php');
         }
         if (isset($_SESSION['successful-delete'])) {
             echo "<div class='alert alert-primary mt-3 mb-0' role='alert'><strong>" . $_SESSION['successful-delete'] . "</strong></div>";
-            unset($_SESSION['successful-delete²']);
+            unset($_SESSION['successful-delete']);
         }
 
         if (isset($_SESSION['empty-image'])) {
@@ -119,7 +117,7 @@ include('scripts.php');
                         <!-- This Input Allows Storing instrument Index  -->
                         <input type="hidden" id="instrument-id" name="instrument_id">
                         <!-- This Input Allows Storing image destination  -->
-                        <input type="text" id="image destination" name="image_destination">
+                        <input type="hidden" id="image destination" name="image_destination">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
                             <input type="text" class="form-control" id="instrument-name" name="name" />

@@ -5,6 +5,10 @@ session_start();
 if (isset($_POST['save']))     save();
 if (isset($_POST['update']))   update();
 if (isset($_POST['delete']))    delete();
+if (isset($_POST['logout'])) {
+    unset($_SESSION['profil']);
+    echo "<script>window.location.replace('login.php')</script>";
+}
 
 function save()
 {
@@ -66,12 +70,6 @@ function delete()
     mysqli_query($con, $sql);
     $_SESSION['successful-delete'] = "The instrument has been deleted successfully";
     header('location: index.php');
-}
-
-if (isset($_POST['logout'])) {
-    //var_dump($_SESSION['profil']);
-    unset($_SESSION['profil']);
-    echo "<script>window.location.replace('login.php')</script>";
 }
 
 function countInstruments()

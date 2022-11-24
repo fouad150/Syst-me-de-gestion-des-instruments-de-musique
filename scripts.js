@@ -14,7 +14,7 @@ function showModal(parent){
     form.category_id.value=category_id;
     form.quantity.value=quantity;
     form.price.value=price;
-    console.log(form.name.value);
+    console.log(form);
 
     hideSave();
 }
